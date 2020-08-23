@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.changan.dao.StudentMapper">
+    <select id="selectStudent" parameterType="java.lang.String" resultType="cn.changan.entity.Student">
+        select * from student where student_id = #{student_id}
+    </select>
+
+    <update id="updateStudent" parameterType="cn.changan.entity.Student">
+        update student set birth=#{birth},id_card=#{id_card},native_place=#{native_place},politic_face=#{politic_face},phone_number=#{phone_number} where student_id = #{student_id}
+    </update>
+
+    <select id="selectStudentCount" resultType="java.lang.Integer">
+        select count(*) from student
+    </select>
+
+    <select id="selectStudentList" resultType="cn.changan.entity.Student">
+        select * from student limit #{currentPage},#{pageSize}
+    </select>
+
+    <delete id="deleteStudent" parameterType="java.lang.String">
+        delete from student where student_id = #{student_id}
+    </delete>
+
+    <insert id="insertStudent" parameterType="cn.changan.entity.Student">
+        insert into student values (#{student_id},#{student_name},#{sex},#{birth},#{nationality},#{id_card},#{native_place},#{politic_face},#{student_year},#{department},#{major},#{student_class},#{phone_number},#{portrait})
+    </insert>
+
+    <update id="updatePortrait" parameterType="java.lang.String">
+        update student set portrait = #{portrait} where student_id = #{student_id}
+    </update>
+</mapper>

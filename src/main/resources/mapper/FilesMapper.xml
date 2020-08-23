@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.changan.dao.FilesMapper">
+    <insert id="insertFiles" parameterType="cn.changan.entity.Files">
+        insert into files values (#{file_id},#{file_name},#{file_path})
+    </insert>
+    <select id="selectFiles" parameterType="java.lang.String" resultType="cn.changan.entity.Files">
+        select * from files where file_id = #{file_id}
+    </select>
+</mapper>

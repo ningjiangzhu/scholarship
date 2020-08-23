@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.aliyun:aliyun-java-sdk-dysmsapi:1.1.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.aliyun/aliyun-java-sdk-dysmsapi/1.1.0/83a1bff8ca2add2ecb48704816137ba93d0272b4/aliyun-java-sdk-dysmsapi-1.1.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.aliyun/aliyun-java-sdk-dysmsapi/1.1.0/426ed1fdd32303031ad13330fb5287c0b5ada228/aliyun-java-sdk-dysmsapi-1.1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

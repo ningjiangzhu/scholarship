@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.changan.dao.QuestionMapper">
+    <insert id="insertQuestion" parameterType="cn.changan.entity.Question">
+        insert into question values(#{question_id},#{question_name},#{question_time},#{question_people},#{question_content},#{answer_time},#{answer_people},#{answer_content},#{question_state})
+    </insert>
+
+    <select id="selectQuestionCount" resultType="java.lang.Integer">
+        select count(*) from question
+    </select>
+
+    <select id="selectQuestion" parameterType="java.lang.String" resultType="cn.changan.entity.Question">
+        select * from question where question_id = #{question_id}
+    </select>
+
+    <select id="selectQuestionList" resultType="cn.changan.entity.Question">
+        select * from question order by question_time desc limit #{currentPage},#{pageSize}
+    </select>
+
+    <update id="updateQuestion" parameterType="cn.changan.entity.Question">
+        update question set question_name = #{question_name},question_time = #{question_time},question_people=#{question_people},question_content=#{question_content},answer_time=#{answer_time},answer_people=#{answer_people},answer_content=#{answer_content} where question_state = #{question_state}
+    </update>
+
+    <delete id="deleteQuestion" parameterType="java.lang.String">
+        delete from question where question_id = #{question_id}
+    </delete>
+
+</mapper>

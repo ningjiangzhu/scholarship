@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.changan.dao.GradeMapper">
+    <select id="selectGrade" parameterType="java.lang.String" resultType="cn.changan.entity.Grade">
+        select * from grade where grade_id = #{grade_id}
+    </select>
+
+    <insert id="insertGrade" parameterType="cn.changan.entity.Grade">
+        insert into grade values (#{grade_id},#{fail_number},#{intellect_score},#{moral_score},#{art_score},#{total_score},#{intellect_ranking},#{total_ranking},#{grade_reason},#{intellect_file},#{moral_file},#{art_file},#{grade_state})
+    </insert>
+
+    <update id="updateGrade" parameterType="cn.changan.entity.Grade">
+        update grade set fail_number=#{fail_number},intellect_score=#{intellect_score},moral_score=#{moral_score},art_score=#{art_score},total_score=#{total_score},intellect_ranking=#{intellect_ranking},total_ranking=#{total_ranking},grade_reason=#{grade_reason},intellect_file=#{intellect_file},moral_file=#{moral_file},art_file=#{art_file},grade_state=#{grade_state} where grade_id=#{grade_id}
+    </update>
+
+    <delete id="deleteGrade" parameterType="java.lang.String">
+        delete from grade where grade_id = #{grade_id}
+    </delete>
+
+    <select id="selectAllGrade" resultType="cn.changan.entity.Grade">
+        select * from grade order by total_ranking+0,intellect_score desc
+    </select>
+
+    <select id="selectGradeCount" resultType="java.lang.Integer">
+        select count(*) from grade
+    </select>
+
+    <select id="selectGradeList" resultType="cn.changan.entity.Grade">
+        select * from grade order by total_ranking+0,intellect_score desc limit #{currentPage},#{pageSize}
+    </select>
+
+    <select id="selectCheckGradeCount" resultType="java.lang.Integer">
+        select count(*) from grade where grade_state = '未审核'
+    </select>
+
+    <select id="selectCheckGradeList" resultType="cn.changan.entity.Grade">
+        select * from grade where grade_state = '未审核' limit #{currentPage},#{pageSize}
+    </select>
+</mapper>

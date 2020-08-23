@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.changan.dao.ScholarshipMapper">
+    <insert id="insertScholarship" parameterType="cn.changan.entity.Scholarship">
+        insert into scholarship values (#{scholarship_id},#{scholarship_name},#{scholarship_type},#{scholarship_money},#{scholarship_quota},#{scholarship_year},#{start_time},#{end_time},#{creation_unit},#{funding_source},#{basic_requirement},#{scholarship_file})
+    </insert>
+
+    <delete id="deleteScholarship" parameterType="java.lang.String">
+        delete from scholarship where scholarship_id = #{scholarship_id}
+    </delete>
+
+    <select id="selectScholarship" parameterType="java.lang.String" resultType="cn.changan.entity.Scholarship">
+        select * from scholarship where scholarship_id = #{scholarship_id}
+    </select>
+
+    <select id="selectScholarshipListByTime" parameterType="java.util.Date" resultType="cn.changan.entity.Scholarship">
+        select * from scholarship where start_time <![CDATA[ <= ]]> #{nowTime} and end_time >= #{nowTime}
+    </select>
+
+    <select id="selectScholarshipListByTimeLike" resultType="cn.changan.entity.Scholarship">
+        select * from scholarship where start_time <![CDATA[ <= ]]> #{nowTime} and end_time >= #{nowTime} and (scholarship_type like #{condition} or scholarship_name like #{condition})
+    </select>
+
+    <select id="selectAllScholarship" resultType="cn.changan.entity.Scholarship">
+        select * from scholarship order by end_time desc
+    </select>
+
+    <select id="selectScholarshipListByLike" parameterType="java.lang.String" resultType="cn.changan.entity.Scholarship">
+        select * from scholarship where scholarship_type like #{condition} or scholarship_name like #{condition} order by end_time desc
+    </select>
+</mapper>

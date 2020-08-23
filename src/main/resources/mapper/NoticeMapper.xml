@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.changan.dao.NoticeMapper">
+
+    <insert id="insertNotice" parameterType="cn.changan.entity.Notice">
+        insert into notice values(#{notice_id},#{notice_name},#{notice_time},#{notice_people},#{notice_content},#{notice_file})
+    </insert>
+
+    <select id="selectNoticeCount" resultType="java.lang.Integer">
+        select count(*) from notice
+    </select>
+
+    <select id="selectNotice" parameterType="java.lang.String" resultType="cn.changan.entity.Notice">
+        select * from notice where notice_id = #{notice_id}
+    </select>
+
+    <select id="selectNoticeList" resultType="cn.changan.entity.Notice">
+        select * from notice order by notice_time desc limit #{currentPage},#{pageSize}
+    </select>
+</mapper>

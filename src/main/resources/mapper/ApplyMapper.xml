@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.changan.dao.ApplyMapper">
+    <insert id="insertApply" parameterType="cn.changan.entity.Apply">
+        insert into apply values (#{apply_id},#{student_id},#{scholarship_id},#{apply_time},#{apply_reason},#{apply_form},#{school_report},#{award_certificate},#{apply_state},#{check_time},#{fail_reason},#{total_score})
+    </insert>
+
+    <delete id="deleteApply" parameterType="java.lang.String">
+        delete from apply where apply_id = #{apply_id}
+    </delete>
+
+    <select id="selectApply" parameterType="java.lang.String" resultType="cn.changan.entity.Apply">
+        select * from apply where apply_id = #{apply_id}
+    </select>
+
+    <select id="selectApplyListByStudentId" parameterType="java.lang.String" resultType="cn.changan.entity.Apply">
+        select * from apply where student_id = #{student_id} order by apply_time desc
+    </select>
+
+    <select id="selectApplyListByState" resultType="cn.changan.entity.Apply">
+        select * from apply where scholarship_id = #{scholarship_id} and apply_state = #{apply_state} order by total_score desc
+    </select>
+
+    <delete id="deleteApplyByScholarshipId" parameterType="java.lang.String">
+        delete from apply where scholarship_id = #{scholarship_id}
+    </delete>
+
+    <delete id="deleteApplyByStudentId" parameterType="java.lang.String">
+        delete from apply where student_id = #{student_id}
+    </delete>
+</mapper>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.changan.dao.PublicityMapper">
+    <insert id="insertPublicity" parameterType="cn.changan.entity.Publicity">
+        insert into publicity values(#{publicity_id},#{scholarship_id},#{start_time},#{end_time})
+    </insert>
+    <select id="selectPublicityListByScholarshipId" parameterType="java.lang.String" resultType="cn.changan.entity.Publicity">
+        select * from publicity where scholarship_id = #{scholarship_id} order by end_time
+    </select>
+
+    <select id="selectPublicityListByTime" parameterType="java.util.Date" resultType="cn.changan.entity.Publicity">
+        select * from publicity where start_time <![CDATA[ <= ]]> #{nowTime} and end_time >= #{nowTime}
+    </select>
+
+    <delete id="deletePublicityByScholarshipId" parameterType="java.lang.String">
+        delete from publicity where scholarship_id = #{scholarship_id}
+    </delete>
+</mapper>
