@@ -1,2 +1,2 @@
 # scholarship
-Gradle+SpringMVC+MyBatis高校奖学金申报管理系统
+Gradle+SpringMVC+MyBatis+Bootstrap高校奖学金申报管理系统
